@@ -1,0 +1,21 @@
+{
+	"name": "hexo-theme-yet-the-books-custom",
+	"version": "1.4.3",
+	"description": "基于yet-the-books定制魔改的主题",
+	"keywords": [
+		"hexo",
+		"theme",
+		"yet-the-books"
+	],
+	"author": "ChlorineC",
+	"license": "MIT",
+	"main": "index.js",
+	"scripts": {
+		"postinstall": "node ./move_config.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/KiritoKing/hexo-theme-yet-the-books-custom.git"
+	},
+	"homepage": "https://github.com/KiritoKing/hexo-theme-yet-the-books-custom"
+}

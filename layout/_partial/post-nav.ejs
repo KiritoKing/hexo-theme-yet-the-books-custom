@@ -1,0 +1,37 @@
+<nav class="post-nav">
+<% site.categories.map(function(category){  %>
+    <% page.categories.map(function(page_category){ %>
+        <% if(page_category.name === category.name){ %> <!-- 先找到与当前文字相同的目录 -->
+            <% let i = 0;%>
+            <% category.posts.sort('title').map(function(post){ %>
+                <% i++;  %> 
+                <% if(post.title === page.title){ %> <!-- 在找到当前文章所在的 index -->
+                    <% let ix = 0;%>
+                    <% let prevUrl, nextUrl, prevName, nextName %> 
+                    <% category.posts.sort('title').map(function(post){ %>
+                        <% ix++; %> 
+
+                        <% if(ix == i - 1 && post.title){ %>  <!-- 上一篇文章 --> 
+                            <% prevUrl = url_for(post.path); %> 
+                            <% prevName = post.title; %> 
+                        <% } %>
+
+                        <% if(ix == i + 1 && post.title){ %> <!-- 下一篇文章 --> 
+                            <% nextUrl = url_for(post.path); %> 
+                            <% nextName = post.title; %> 
+                        <% } %>
+                    <% }) %>
+                    <div class="new">
+                        <span><%- nextUrl ? "下一章" : "终焉" %> </span>
+                        <a href="<%- nextUrl %>"> <%= nextName %></a>
+                    </div>
+                    <div class="old">
+                        <span><%- prevUrl ? "上一章" : "起始" %> </span>
+                        <a href="<%- prevUrl %>"> <%= prevName %></a>
+                    </div>
+                <% } %>
+            <% }) %>
+        <% } %>
+    <% })%>
+<% }) %>
+</nav>
